@@ -3,8 +3,16 @@
 This project fine-tunes a pretrained `ResNet50` model on the iNaturalist dataset for classifying images into 10 natural categories. The experiment involves adjusting the final classification layer, selecting a tuning strategy (`head`, `partial`, or `full`), conducting hyperparameter sweeps using Weights & Biases (Wandb), and comparing performance with **Part A** (CNN from scratch).
 
 ---
+### 1. Model Adaptation
 
-### 1. Data Preprocessing
+**Pre-trained Model:**
+
+- Loaded **ResNet50** from `torchvision.models` with pretrained weights.
+  ```python
+  model = torchvision.models.resnet50(weights="IMAGENET1K_V2")  
+```
+
+### 2. Data Preprocessing
 
 **Dataset:**
 
@@ -26,7 +34,7 @@ This project fine-tunes a pretrained `ResNet50` model on the iNaturalist dataset
 - **20%** of the training data is used for validation.
 - **Stratified sampling** ensures equal class distribution across train/val sets.
 
-### 2. Model Architecture and Fine-Tuning Modes
+### 3. Model Architecture and Fine-Tuning Modes
 
 **Base Model:**
 
@@ -71,7 +79,7 @@ model.fc = nn.Sequential(
             param.requires_grad = True
 ```
 
-### 3. Hyperparameter Tuning with Wandb
+### 4. Hyperparameter Tuning with Wandb
 
 A **Bayesian hyperparameter sweep** was performed (22 runs) to determine optimal settings for **head tuning**.
 
@@ -96,7 +104,7 @@ A **Bayesian hyperparameter sweep** was performed (22 runs) to determine optimal
 - **Learning Rate:** 0.0001
 - **Tuning Mode:** `'head'` Tuning
 
-### 4. Training and Evaluation
+### 5. Training and Evaluation
 
 **Loss Function:**  
 - **CrossEntropyLoss**
@@ -117,5 +125,15 @@ A **Bayesian hyperparameter sweep** was performed (22 runs) to determine optimal
 - **Corresponding Test Accuracy:** 0.8075
 
 The model outperformed the custom CNN from **Part A** on this dataset.
+
+#### Comparison with Part A:
+
+- **Validation Accuracy:**  from 0.3932 (Part A) to 0.8109 (Part B)
+- **Test Accuracy:**  from 0.4150 (Part A) to 0.8075 (Part B)
+
+### GitHub Repository
+The full implementation, including fine-tuning code, sweep configuration, and logging utilities, is available here:  
+[GitHub Link]()
+
 
 
