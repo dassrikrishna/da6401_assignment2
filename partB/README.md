@@ -49,4 +49,50 @@ model.fc = nn.Sequential(
 | **Head Tuning** | All layers frozen except the final classification head.                     |
 | **Partial Tuning** | Unfreezes later ResNet layers (e.g., `layer3`, `layer4`) for selective fine-tuning. |
 | **Full Tuning** | The entire network is unfrozen and retrained end-to-end.                    |
+```python
+    if mode == "head":
+        # Freeze all layers except the final classification head
+        for name, param in model.named_parameters():
+            if not name.startswith("fc"):
+                param.requires_grad = False
+
+    elif mode == "partial":
+        # Partially unfreeze the model, training layers from 'unfreeze_from' onwards
+        freeze = True
+        for name, module in model.named_children():
+            if name == unfreeze_from:
+                freeze = False
+            for param in module.parameters():
+                param.requires_grad = not freeze
+
+    elif mode == "full":
+        # Unfreeze the entire model, training all layers
+        for param in model.parameters():
+            param.requires_grad = True
+```
+
+### 3. Hyperparameter Tuning with Wandb
+
+A **Bayesian hyperparameter sweep** was performed (22 runs) to determine optimal settings for **head tuning**.
+
+**Parameters Explored:**
+
+| Hyperparameter   | Values               |
+|------------------|----------------------|
+| **Epochs**       | 5, 10                |
+| **Dropout Rate** | 0.0, 0.2, 0.3        |
+| **Batch Size**   | 32, 64               |
+| **Learning Rate**| 1e-3, 1e-4           |
+
+**Early Stopping:**
+
+- Enabled to halt training after 3 epochs without validation improvement.
+
+**Best Configuration Identified:**
+
+- **Epochs:** 5
+- **Dropout:** 0.3
+- **Batch Size:** 64
+- **Learning Rate:** 0.0001
+- **Tuning Mode:** `'head'` Tuning
 
