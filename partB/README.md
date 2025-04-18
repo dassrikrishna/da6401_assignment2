@@ -133,7 +133,7 @@ The model outperformed the custom CNN from **Part A** on this dataset.
 
 ### GitHub Repository
 The full implementation, including fine-tuning code, sweep configuration, and logging utilities, is available here:  
-[GitHub Link]()
+[GitHub Link](https://github.com/dassrikrishna/da6401_assignment2/tree/main/partB)
 
 
 
