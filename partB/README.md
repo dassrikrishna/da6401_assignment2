@@ -25,3 +25,28 @@ This project fine-tunes a pretrained `ResNet50` model on the iNaturalist dataset
 
 - **20%** of the training data is used for validation.
 - **Stratified sampling** ensures equal class distribution across train/val sets.
+
+### 2. Model Architecture and Fine-Tuning Modes
+
+**Base Model:**
+
+- **ResNet50** from `torchvision.models` with pretrained weights from **ImageNet**.
+
+**Final Layer Modification:**
+
+- The original classifier (1000-class) is replaced with a new dense layer for **10-class** classification:
+```python
+model.fc = nn.Sequential(
+    nn.Dropout(dropout_rate),
+    nn.Linear(in_features, 10)
+)
+```
+
+**Fine-Tuning Strategies Implemented:**
+
+| Strategy        | Description                                                                 |
+|-----------------|-----------------------------------------------------------------------------|
+| **Head Tuning** | All layers frozen except the final classification head.                     |
+| **Partial Tuning** | Unfreezes later ResNet layers (e.g., `layer3`, `layer4`) for selective fine-tuning. |
+| **Full Tuning** | The entire network is unfrozen and retrained end-to-end.                    |
+
