@@ -12,7 +12,6 @@
 
 ## Part A: Training from Scratch
 
-### Overview
 This project involves building, training, and evaluating a Convolutional Neural Network (CNN) from scratch to classify images into 10 classes using [iNaturalist dataset](https://storage.googleapis.com/wandb_datasets/nature_12K.zip). The workflow covers model design, hyperparameter tuning, and performance evaluation.
 
 ### 1. Model Architecture
@@ -54,4 +53,30 @@ The sweep results and plots provide insights into which hyperparameters most inf
 ### 5. Code Repository
 The complete code for Part A, including data preprocessing, model building, training, hyperparameter sweeps, and evaluation, is available on GitHub.
 [Link Part A](https://github.com/dassrikrishna/da6401_assignment2/tree/main/partA)
+
+
+## Part B: Fine-tuning a Pre-trained Model
+
+This project explores transfer learning by fine-tuning a model pre-trained on ImageNet for image classification on a subset of the iNaturalist dataset. The workflow covers adapting pre-trained models, experimenting with different fine-tuning strategies, and comparing results with training from scratch.
+
+### 1. Adapting a Pre-trained Model
+- Loaded a pre-trained model from the torchvision library (e.g., `ResNet50`, `VGG`, `EfficientNetV2`, etc.), originally trained on the ImageNet dataset.
+- Adjusted input image dimensions to match the requirements of the chosen pre-trained model by resizing and normalizing the iNaturalist images accordingly.
+- Modified the final classification layer of the pre-trained model to output 10 classes, matching the number of classes in the iNaturalist subset.
+
+### 2. Fine-tuning Strategies
+- To keep training tractable, experimented with the following strategies:
+  - Freezing all layers except the last layer and training only the final classification layer.
+  - Freezing up to a certain number of layers (e.g., up to `layer3`), and fine-tuning the remaining layers.
+  - Unfreezing and fine-tuning all layers of the model.
+- Compared these approaches to find a balance between computational efficiency and model performance.
+
+### 3. Fine-tuning and Insights
+- Selected one fine-tuning strategy and trained the adapted model on the iNaturalist dataset.
+- Compared results from fine-tuning a large pre-trained model to training a small CNN from scratch.
+- Documented key inferences, such as differences in training speed, accuracy, and generalization, highlighting the benefits and trade-offs of transfer learning.
+
+### 4. Code Repository
+The complete code for Part B, including model adaptation, fine-tuning strategies, and evaluation, is available on GitHub.
+[Link Part B](https://github.com/dassrikrishna/da6401_assignment2/tree/main/partB)
 
