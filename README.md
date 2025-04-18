@@ -52,5 +52,6 @@ The sweep results and plots provide insights into which hyperparameters most inf
 - Presented a 10 x 3 grid of test images with predicted labels, displayed creatively for clarity and visual appeal.
 
 ### 5. Code Repository
-The complete code for Part A, including data preprocessing, model building, training, hyperparameter sweeps, and evaluation, is available on GitHub.[Link PartA]()
+The complete code for Part A, including data preprocessing, model building, training, hyperparameter sweeps, and evaluation, is available on GitHub.
+[Link Part A](https://github.com/dassrikrishna/da6401_assignment2/tree/main/partA)
 
