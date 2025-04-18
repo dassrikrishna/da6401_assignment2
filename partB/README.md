@@ -8,7 +8,7 @@ This project fine-tunes a pretrained `ResNet50` model on the iNaturalist dataset
 **Pre-trained Model:**
 
 - Loaded **ResNet50** from `torchvision.models` with pretrained weights.
-  ```python
+```python
   model = torchvision.models.resnet50(weights="IMAGENET1K_V2")  
 ```
 
