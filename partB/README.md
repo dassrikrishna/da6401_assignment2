@@ -96,3 +96,26 @@ A **Bayesian hyperparameter sweep** was performed (22 runs) to determine optimal
 - **Learning Rate:** 0.0001
 - **Tuning Mode:** `'head'` Tuning
 
+### 4. Training and Evaluation
+
+**Loss Function:**  
+- **CrossEntropyLoss**
+
+**Optimizer:**  
+- **Adam**
+
+**Training Strategy:**
+- Only the newly added final layer is trained in **head tuning**.
+- **Wandb** is used to log loss and accuracy for each epoch.
+
+**Validation:**
+- Best model is chosen based on **validation accuracy**.
+- Metrics are logged and visualized using **Wandb**.
+
+**Test Evaluation:**
+- **Best Validation Accuracy:** 0.8109
+- **Corresponding Test Accuracy:** 0.8075
+
+The model outperformed the custom CNN from **Part A** on this dataset.
+
+
