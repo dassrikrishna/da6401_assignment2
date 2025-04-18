@@ -95,4 +95,4 @@ A Bayesian optimization sweep (29 runs) was conducted to identify optimal hyperp
 
 ## GitHub Repository  
 The complete code, including data preprocessing, model architecture, training loops, and Wandb integration, is available here:  
-**[GitHub Link]()**
+**[GitHub Link](https://github.com/dassrikrishna/da6401_assignment2/tree/main/partA)**
