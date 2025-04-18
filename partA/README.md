@@ -83,7 +83,7 @@ A Bayesian optimization sweep (29 runs) was conducted to identify optimal hyperp
 - Best model saved based on validation performance.  
 
 **Test Evaluation:**
-- Achieved Validation Accuracy: 0.8109 and Test Accuracy: 0.8075  
+- Achieved Validation Accuracy: 0.3932 and Test Accuracy: 0.4150  
 - Sample Predictions: Generated a 10 x 3 grid of test images with true vs. predicted labels.  
 
 ## Key Results  
